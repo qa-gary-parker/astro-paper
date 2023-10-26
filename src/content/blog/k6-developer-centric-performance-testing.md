@@ -10,15 +10,17 @@ tags:
 description: "What is k6? An open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible."
 ---
 
-## ❓ What is k6?
+![blog post banner](../../assets/images/k6-developer-centric-performance-testing/banner.png)
 
-An open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.
+## 🔎 What is k6?
+
+> An open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.
 
 ## Table of contents
 
 ## 💼 Who should be using k6?
 
-k6 users are typically Developers, QA Engineers, SDETs, and SREs. They use k6 for testing the performance and reliability of APIs, microservices, and 
+> k6 users are typically Developers, QA Engineers, SDETs, and SREs. They use k6 for testing the performance and reliability of APIs, microservices, and 
 websites.
 
 ## 🚀 Getting started
@@ -29,7 +31,11 @@ Let’s install k6! — Follow one of these installation processes depending on 
 
 This is a very basic test to get started, we are making a single request with one user.
 
+![running a test](../../assets/images/k6-developer-centric-performance-testing/image-1.png)
+
 Below is the output of that run, where you can see various metrics and data from the request made.
+
+![blog post banner](../../assets/images/k6-developer-centric-performance-testing/image-2.png)
 
 ## 🤖 Adding virtual users
 
