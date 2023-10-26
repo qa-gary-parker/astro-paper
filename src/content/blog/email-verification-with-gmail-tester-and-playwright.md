@@ -11,9 +11,15 @@ description:
   We will be creating some simple tests for email verification - if you work with systems that trigger emails and you need to verify the receipt of them, this setup is what you need.
 ---
 
+<div>
+  <img src="../../assets/images/email-verification-with-gmail-tester-and-playwright/banner.png" class="sm:w-1/2 mx-auto" alt="blog post banner">
+</div>
+
+---
+
 ## 👋 Introduction
 
-We will be creating some simple tests for email verification - if you work with systems that trigger emails and you need to verify the receipt of them, this setup is what you need.
+We will be creating some simple tests for email verification - if you work with systems that trigger emails and you need to verify the receipt of them, this setup is what you need.
 
 ## Table of contents
 
@@ -26,20 +32,21 @@ We will be creating some simple tests for email verification - if you work w
 
 ## 💻 Commands
 
-The ```credentials.json``` is where we will store the values from the **OAuth2 Authentication file.**
-
-To generate the ```token.json``` we need to run the following command:
-
+- The ```credentials.json``` is where we will store the values from the **OAuth2 Authentication file.**
+- To generate the ```token.json``` we need to run the following command:
 ```node node_modules/gmail-tester/init.js credentials.json token.json my-email-address@gmail.com```
 
-It's executed using node - and the script being executed is at this path within your project: ```node_modules/gmail-tester/init.js```
-
-Replace the email address with the one you want to use (this should be the same one used to generate your authentication file.
+- It's executed using node - and the script being executed is at this path within your project: ```node_modules/gmail-tester/init.js```
+- Replace the email address with the one you want to use (this should be the same one used to generate your authentication file.
 
 ## 📁 Project structure
 Once you have the authentication files required, this is how I'd suggest structuring your project.
 
-If you plan to push this to a repository, make sure to store the authentication and any other sensitive data elsewhere / as secrets.
+> If you plan to push this to a repository, make sure to store the authentication and any other sensitive data elsewhere / as secrets.
+
+<div>
+  <img src="../../assets/images/email-verification-with-gmail-tester-and-playwright/image-1.png" class="sm:w-1/2 mx-auto" alt="project structure">
+</div>
 
 ## 🔐 Authentication
 
@@ -115,6 +122,10 @@ test('has email', async () => {
 ## 🏃 Running the test
 
 It's a fairly quick test to execute and provides information about the parameters you have queried.
+
+<div>
+  <img src="../../assets/images/email-verification-with-gmail-tester-and-playwright/image-2.png" class="sm:w-1/2 mx-auto" alt="test run">
+</div>
 
 ## 🏁 Conclusion
 
