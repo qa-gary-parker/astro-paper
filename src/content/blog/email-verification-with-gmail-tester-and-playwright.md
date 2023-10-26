@@ -11,9 +11,7 @@ description:
   We will be creating some simple tests for email verification - if you work with systems that trigger emails and you need to verify the receipt of them, this setup is what you need.
 ---
 
-<div>
-  <img src="/assets/images/email-verification-with-gmail-tester-and-playwright/banner.png" class="sm:w-1/2 mx-auto" alt="blog post banner">
-</div>
+![blog post banner](../../assets/images/email-verification-with-gmail-tester-and-playwright/banner.png)
 
 ---
 
@@ -44,10 +42,7 @@ Once you have the authentication files required, this is how I'd suggest structu
 
 > If you plan to push this to a repository, make sure to store the authentication and any other sensitive data elsewhere / as secrets.
 
-
-<div>
-  <img src="/assets/images/email-verification-with-gmail-tester-and-playwright/image-1.png" class="sm:w-1/2 mx-auto" alt="project structure">
-</div>
+![project structure](../../assets/images/email-verification-with-gmail-tester-and-playwright/image-1.png)
 
 ## 🔐 Authentication
 
@@ -124,9 +119,7 @@ test('has email', async () => {
 
 It's a fairly quick test to execute and provides information about the parameters you have queried.
 
-<div>
-  <img src="/assets/images/email-verification-with-gmail-tester-and-playwright/image-2.png" class="sm:w-1/2 mx-auto" alt="test run">
-</div>
+![test run](../../assets/images/email-verification-with-gmail-tester-and-playwright/image-2.png)
 
 ## 🏁 Conclusion
 
