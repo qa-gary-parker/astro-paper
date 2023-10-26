@@ -1,173 +1,107 @@
 ---
-author: Sat Naing
-pubDatetime: 2023-09-25T10:25:54.547Z
-title: AstroPaper 3.0
-postSlug: astro-paper-v3
+author: Gary Parker
+pubDatetime: 2023-10-25T10:25:54.547Z
+title: k6 — Developer-centric performance testing
+postSlug: k6-developer-centric-performance-testing
 featured: true
 ogImage: https://github.com/satnaing/astro-paper/assets/53733092/1ef0cf03-8137-4d67-ac81-84a032119e3a
 tags:
-  - release
-description: "AstroPaper Version 3: Elevating Your Web Experience with Astro v3 and Seamless View Transitions"
+  - k6
+description: "What is k6? An open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible."
 ---
 
-We're excited to announce the release of AstroPaper v3, packed with new features, enhancements, and bug fixes to elevate your web development experience. Let's dive into the highlights of this release:
+## What is k6?
 
-![AstroPaper v3](@assets/images/AstroPaper-v3.png)
+An open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.
 
 ## Table of contents
 
-## Features & Changes
+## Who should be using k6?
 
-### Astro v3 Integration
+k6 users are typically Developers, QA Engineers, SDETs, and SREs. They use k6 for testing the performance and reliability of APIs, microservices, and 
+websites.
 
-<video autoplay loop="loop" muted="muted" plays-inline="true">
-  <source src="https://github.com/satnaing/astro-paper/assets/53733092/18fdb604-1ca3-41a0-8372-1367759091ff" type="video/mp4">
-  <!-- <source src="/assets/docs/astro-paper-v3-view-transitions-demo.mp4" type="video/mp4"> -->
-</video>
+## Getting started
 
-AstroPaper now fully supports [Astro v3](https://astro.build/blog/astro-3/), offering improved performance and rendering speed.
+Let’s install k6! — Follow one of these installation processes depending on your platform.
 
-Besides, we've added support for Astro's [ViewTransitions API](https://docs.astro.build/en/guides/view-transitions/), allowing you to create captivating and dynamic transitions between views.
+## Running a test
 
-In the "Recent Section", only non-featured posts will be displayed to avoid duplications and better support for ViewTransitions API.
+This is a very basic test to get started, we are making a single request with one user.
 
-### Update OG Image Generation Logic
+Below is the output of that run, where you can see various metrics and data from the request made.
 
-![Example OG Image](https://user-images.githubusercontent.com/40914272/269252964-a0dc6735-80f7-41ed-8e74-4d4d70f96891.png)
+## Adding virtual users
 
-We've updated the logic for automatic OG image generation, making it even more reliable and efficient. Besides, it now supports special characters in post titles, ensuring accurate, flexible and eye-catching social media previews.
+Let’s scale it up! The core of performance testing is about sending increased amounts of load/traffic, and k6 makes that very easy to do.
 
-`SITE.ogImage` is now optional. If it is not specified, AstroPaper will automatically generate an OG image using `SITE.title`, `SITE.desc` and `SITE.website`
+We have 2 options, we can define the vus (virtual users) and duration to run for in the test script.
 
-### Theme meta tag
+Or we can pass it as parameters in the command line execution.
 
-The theme-color meta tag has been added to dynamically adapt to theme switches, ensuring a seamless user experience.
+## Understanding metrics
 
-> Notice the difference at the top
+The link below has the full breakdown of all metrics and definitions, I’m going to give a brief overview of the main ones.
 
-**_AstroPaper v2 theme switch_**
+## Metrics
 
-<video autoplay loop="loop" muted="muted" plays-inline="true">
-  <source src="https://github.com/satnaing/astro-paper/assets/53733092/3ab5a1e8-1891-4264-a5bb-0ded69143c1a" type="video/mp4">
-</video>
+This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects…
+k6.io
 
-**_AstroPaper v3 theme switch_**
+- data received / data sent — fairly self-explanatory, if you’re more interested in tracking data transmitted by specific URL’s, there is more detailed documentation in the link below.
 
-<video autoplay loop="loop" muted="muted" plays-inline="true">
-  <source src="https://github.com/satnaing/astro-paper/assets/53733092/8ac9deb8-d1f8-4029-86bd-6aa0def380b4" type="video/mp4">
-</video>
+By default, k6 collects automatically two built-in metrics related to the transmitted data during the test execution…
+k6.io
 
-## Other Changes
+- http requests—these are broken down into the different states that the request can be in, and the response times during those times
+- iterations — the amount that were run, and the time it took to complete one full iteration
+- VU’s — the min and max number of virtual users during that run
 
-### Astro Prettier Plugin
+## Adding checks
 
-Astro Prettier Plugin is installed out-of-the-box in order to keep the project tidy and organized.
+Partially failing run
 
-### Minor Style Changes
+There are two checks in this execution — status code and body size.
 
-The single-line code block wrapping issue has been solved, making your code snippets look pristine.
+As you can see the second check has failed. due to body size being above the defined value.
 
-Update nav style CSS to allow adding more nav links to the navigation.
+Successful run
 
-## Upgrade to AstroPaper v3
+And in this run, we can see all of the checks have been successful for the test execution.
 
-> This section is only for those who want to upgrade AstroPaper v3 from the older versions.
+## Setting thresholds
 
-This section will help you migrate from AstroPaper v2 to AstroPaper v3.
+Thresholds allow a bit more flexibility with the checks we can implement. In this scenario we have added two thresholds — http errors should be less than 1% and 95% of requests should be below 200ms.
 
-Before reading the rest of the section, you might also want to check [this article](https://astro-paper.pages.dev/posts/how-to-update-dependencies/) for upgrading dependencies and AstroPaper.
+As you can see below, both threshold checks have passed with a green tick — this was executed with 10 virtual users, and the checks were made on every request.
 
-## Option 1: Fresh Restart (recommended)
+## Load testing
 
-In this release, a lot of changes have been made\_ replacing old Astro APIs with newer APIs, bug fixes, new features etc. Thus, if you are someone who didn't make customization very much, you should follow this approach.
+The goal is to test the performance of the system in terms of concurrent users and requests— In this scenario we are putting the platform under increased load for a period of time.
 
-**_Step 1: Keep all your updated files_**
+We are ramping up to 100 users over a 1 minute period, maintaining the 100 users for 2 minutes, and then ramping down to 0 users over a 1 minute period.
 
-It's important to keep all the files which have been already updated. These files include
+There are also some checks and thresholds in place that will execute during the stages of this execution.
 
-- `/src/config.ts` (didn't touch in v3)
-- `/src/styles/base.css` (minor changes in v3; mentioned below)
-- `/src/assets/` (didn't touch in v3)
-- `/public/assets/` (didn't touch in v3)
-- `/content/blog/` (it's your blog content directory 🤷🏻‍♂️)
-- Any other customizations you've made.
+The threshold for request durations being below 1.5 seconds failed, as the average duration was 1.8 seconds.
 
-```css
-/* file: /src/styles/base.css */
-@layer base {
-  /* Other Codes */
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-skin-card-muted;
-  }
+Load Testing is primarily concerned with assessing the current performance of your system in terms of concurrent users…
+k6.io
 
-  /* Old code
-  code {
-    white-space: pre;
-    overflow: scroll;
-  } 
-  */
+## Stress testing
 
-  /* New code */
-  code,
-  blockquote {
-    word-wrap: break-word;
-  }
-  pre > code {
-    white-space: pre;
-  }
-}
+The goal is to test availability and stability under heavy load—In this approach, we are looking to push the load on the platform beyond its expected breaking point.
 
-@layer components {
-  /* other codes */
-}
-```
+We are ramping up from below normal load all the way up to beyond the breaking point — its important to do this in stages, as you’ll be able to analyse how the system behaves at all points.
 
-**_Step 1: Replace everything else with AstroPaper v3_**
+Stress testing is one of the many different types of load testing. While load testing is primarily concerned with…
+k6.io
 
-In this step, replace everything\_ except above files/directories (plus your customized files/directories)\_ with AstroPaper v3.
+## Soak testing
+The goal is to test reliability over time — In this instance we are putting the platform under an increased load for an extended period of time.
 
-**_Step 3: Schema Updates_**
+While load testing is primarily concerned with performance assessment, and stress testing is concerned with system…
+k6.io
 
-Keep in mind that `/src/content/_schemas.ts` has been replaced with `/src/content/config.ts`.
-
-Besides, there is no longer `BlogFrontmatter` type exported from `/src/content/config.ts`.
-
-Therefore, all the `BlogFrontmatter` type inside files need to be updated with `CollectionEntry<"blog">["data"]`.
-
-For example: `src/components/Card.tsx`
-
-```ts
-// AstroPaper v2
-import type { BlogFrontmatter } from "@content/_schemas";
-
-export interface Props {
-  href?: string;
-  frontmatter: BlogFrontmatter;
-  secHeading?: boolean;
-}
-```
-
-```ts
-// AstroPaper v3
-import type { CollectionEntry } from "astro:content";
-
-export interface Props {
-  href?: string;
-  frontmatter: CollectionEntry<"blog">["data"];
-  secHeading?: boolean;
-}
-```
-
-## Option 2: Upgrade using Git
-
-This approach is not recommended for most users. You should do the "Option 1" if you can. Only do this if you know how to resolve merge conflicts and you know what you're doing.
-
-Actually, I've already written a blog post for this case and you can check out [here](https://astro-paper.pages.dev/posts/how-to-update-dependencies/#updating-astropaper-using-git).
-
-## Outro
-
-Ready to explore the exciting new features and improvements in AstroPaper v3? Start [using AstroPaper](https://github.com/satnaing/astro-paper) now.
-
-For other bug fixes and integration updates, check out the [release notes](https://github.com/satnaing/astro-paper/releases/tag/v3.0.0) to learn more.
-
-If you encounter any bugs or face difficulties during the upgrade process, please feel free to open an issue or start a discussion on [GitHub](https://github.com/satnaing/astro-paper).
+## Conclusion
+k6 lowers the bar for entry into performance testing and analysis — allowing you to write tests in a language you are familiar with, and get quality checks in place quickly.
