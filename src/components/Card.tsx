@@ -9,7 +9,7 @@ export interface Props {
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, description } = frontmatter;
+  const { title, author, pubDatetime, description } = frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
