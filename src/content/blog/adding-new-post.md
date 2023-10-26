@@ -15,6 +15,8 @@ description:
 
 We will be creating some simple tests for email verification - if you work with systems that trigger emails and you need to verify the receipt of them, this setup is what you need.
 
+## Table of contents
+
 ## 📚 Prerequisites
 
 - Visual Studio Code
