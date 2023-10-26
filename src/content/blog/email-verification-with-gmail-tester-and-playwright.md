@@ -12,7 +12,7 @@ description:
 ---
 
 <div>
-  <img src="../../assets/images/email-verification-with-gmail-tester-and-playwright/banner.png" class="sm:w-1/2 mx-auto" alt="blog post banner">
+  <img src="/assets/images/email-verification-with-gmail-tester-and-playwright/banner.png" class="sm:w-1/2 mx-auto" alt="blog post banner">
 </div>
 
 ---
@@ -44,8 +44,9 @@ Once you have the authentication files required, this is how I'd suggest structu
 
 > If you plan to push this to a repository, make sure to store the authentication and any other sensitive data elsewhere / as secrets.
 
+
 <div>
-  <img src="../../assets/images/email-verification-with-gmail-tester-and-playwright/image-1.png" class="sm:w-1/2 mx-auto" alt="project structure">
+  <img src="/assets/images/email-verification-with-gmail-tester-and-playwright/image-1.png" class="sm:w-1/2 mx-auto" alt="project structure">
 </div>
 
 ## 🔐 Authentication
@@ -124,7 +125,7 @@ test('has email', async () => {
 It's a fairly quick test to execute and provides information about the parameters you have queried.
 
 <div>
-  <img src="../../assets/images/email-verification-with-gmail-tester-and-playwright/image-2.png" class="sm:w-1/2 mx-auto" alt="test run">
+  <img src="/assets/images/email-verification-with-gmail-tester-and-playwright/image-2.png" class="sm:w-1/2 mx-auto" alt="test run">
 </div>
 
 ## 🏁 Conclusion
