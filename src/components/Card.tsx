@@ -28,6 +28,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
           <h3 {...headerProps}>{title}</h3>
         )}
       </a>
+      <h3>{author}</h3>
       <Datetime datetime={pubDatetime} />
       <p>{description}</p>
     </li>
