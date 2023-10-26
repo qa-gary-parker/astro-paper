@@ -38,7 +38,6 @@ export default defineConfig({
     },
   },
   scopedStyleStrategy: "where",
-  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
