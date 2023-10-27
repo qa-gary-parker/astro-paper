@@ -1,8 +1,8 @@
 ---
 author: Ignacio Martin
-pubDatetime: 2023-10-25T10:25:54.547Z
-title: k6 — Developer-centric performance testing
-postSlug: k6-developer-centric-performance-testing
+pubDatetime: 2023-10-27T10:25:54.547Z
+title: Proxies + Tunnels + Docker + Sauce = ?
+postSlug: proxies-tunnels-docker-sauce
 featured: true
 ogImage: https://github.com/satnaing/astro-paper/assets/53733092/1ef0cf03-8137-4d67-ac81-84a032119e3a
 tags:
