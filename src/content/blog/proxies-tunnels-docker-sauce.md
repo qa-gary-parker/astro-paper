@@ -6,7 +6,9 @@ postSlug: proxies-tunnels-docker-sauce
 featured: true
 ogImage: https://github.com/satnaing/astro-paper/assets/53733092/1ef0cf03-8137-4d67-ac81-84a032119e3a
 tags:
-  - docker, saucelabs, terraform
+  - docker
+  - saucelabs
+  - terraform
 description: "Testing an application that is used by a global market can be difficult — what platform or device are they using? Where are they located? Does your application behave differently depending on the country they are in, or even the region or city?"
 ---
 
