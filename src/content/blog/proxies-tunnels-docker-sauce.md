@@ -1,6 +1,6 @@
 ---
 author: Ignacio Martin
-pubDatetime: 2023-10-27T10:25:54.547Z
+pubDatetime: 2023-10-23
 title: Proxies + Tunnels + Docker + Sauce = ?
 postSlug: proxies-tunnels-docker-sauce
 featured: true
@@ -150,7 +150,7 @@ variable "azure_user_admin" {
 }
 ```
 
-Now, the **providers.tf**.
+Now, the **providers.tf**
 
 ```
 terraform {
@@ -238,7 +238,7 @@ resource "azurerm_virtual_network" "networkname" {
 }
 ```
 
-**The subnet**:
+**The subnet**
 
 ```
 resource "azurerm_subnet" "subnetname" {
@@ -249,7 +249,7 @@ resource "azurerm_subnet" "subnetname" {
 }
 ```
 
-The network interface:
+**The network interface**
 
 ```
 resource "azurerm_network_interface" "networkinterfacename" {
@@ -264,7 +264,7 @@ resource "azurerm_network_interface" "networkinterfacename" {
 }
 ```
 
-The virtual machine:
+**The virtual machine**
 
 ```
 resource "azurerm_linux_virtual_machine" "yourvmname" {
@@ -353,26 +353,26 @@ We’ve decided to create different templates for each of the stages, it means w
 
 **setup.yml**: This, as it name indicates, will execute the first steps to setup Terraform, they are:
 
-- Terraform Install
-- Terraform Init
+- **Terraform Install**
+- **Terraform Init**
 
 As we are working with azure subscriptions, the way we use to authorize our resources is by using a service principal. Depending on your configuration, you might need different user credentials.
 
 **build.yml**: Build will execute:
 
-- Terraform Plan: It will create the execution plan, which basically allows you to preview the changes you will make to the resource.
-- Terraform Apply: Any changes on the plan will be now applied to your resource/s.
-- Terraform Output: As we need some data for testing (Yes, we also included some tests as part of our infrastructure), the Output command lets you extract the data from the output variables.
+- **Terraform Plan**: It will create the execution plan, which basically allows you to preview the changes you will make to the resource.
+- **Terraform Apply**: Any changes on the plan will be now applied to your resource/s.
+- **Terraform Output**: As we need some data for testing (Yes, we also included some tests as part of our infrastructure), the Output command lets you extract the data from the output variables.
 Last one (And probably the most interesting ;)):
 
-**test.yml**: As mentioned above, we have included some testing before deploying the resource. On this stage, we use Terratest + Go. This tool allows you to do Unit and Integration tests on your resources. What we are doing in our case is to make sure the Virtual machine is being created properly and the data is matching with what we need.
+**test.yml**: As mentioned above, we have included some testing before deploying the resource. On this stage, we use [Terratest](https://terratest.gruntwork.io/) + [Go](https://go.dev/). This tool allows you to do Unit and Integration tests on your resources. What we are doing in our case is to make sure the Virtual machine is being created properly and the data is matching with what we need.
 
 For example, all the data we need to output from our resource, is compared to make sure the correct IP Address, ports, names, user admin are correct.
 
 ## 🚇 Running tunnels on Sauce Labs with Docker
 Now in order to spin up the tunnels, we decided to do it using the Sauce Docker Container.
 
-The full documentation can be found HERE. The script might change a little bit depending on what you need to pass to initialize the tunnels and the authorization to execute the command.
+The full documentation can be found [here](https://docs.saucelabs.com/secure-connections/sauce-connect/setup-configuration/docker/). The script might change a little bit depending on what you need to pass to initialize the tunnels and the authorization to execute the command.
 
 The script in Azure Devops will look something like this:
 
@@ -411,6 +411,8 @@ Let’s create the tunnels:
 ![create tunnels](../../assets/images/proxies-tunnels-docker-sauce/image-7.png)
 
 And finally, our tunnels are up and running in SauceLabs:
+
+![tunnels running](../../assets/images/proxies-tunnels-docker-sauce/image-8.png)
 
 ## 📝 Conclusion
 Technology moves fast and as you can see, there are a lot of tools out there to learn that can help with your testing goals. You do not need only one to rule it all, getting some ideas, knowledge and practice will allow you to understand how you can mix them to get the best of them to fulfill your needs.

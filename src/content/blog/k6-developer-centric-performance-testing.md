@@ -1,6 +1,6 @@
 ---
 author: Gary Parker
-pubDatetime: 2023-10-25T10:25:54.547Z
+pubDatetime: 2023-10-20
 title: k6 — Developer-centric performance testing
 postSlug: k6-developer-centric-performance-testing
 featured: true

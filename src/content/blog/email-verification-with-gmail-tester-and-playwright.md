@@ -1,6 +1,6 @@
 ---
 author: Gary Parker
-pubDatetime: 2023-09-23T15:22:00Z
+pubDatetime: 2023-09-25
 title: Email verification with gmail-tester and Playwright
 postSlug: email-verification-with-gmail-tester-and-playwright
 featured: true
