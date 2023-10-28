@@ -38,6 +38,8 @@ A Proxy Server is basically a gateway between you and the internet. One of its r
 
 That is not all, there are a lot of functionalities involved in a Proxy Server (They can act as a firewall, web filter, cache data and they also keep the user protected from bad stuff on the internet).
 
+![what is a proxy](../../assets/images/proxies-tunnels-docker-sauce/image-1.png)
+
 ## 🔎 Why should we use them?
 
 A Proxy Server allows us to control internet traffic (Parental control might sound familiar, or if you work in an office, you might be using a Proxy — this is one way to block access to certain sites for example).
@@ -63,6 +65,8 @@ Tunnels transmit the data from a private to a public network, without letting th
 
 By Sauce, we mean Sauce Labs. For those who are not familiar with it, Sauce Labs is a cloud-hosted mobile and web automation testing platform - where we can run tests on web, mobile emulation and real devices using their device farm.
 
+![sauce labs bottle](../../assets/images/proxies-tunnels-docker-sauce/image-2.png)
+
 The other feature they provide is “tunnels”. Which provides a secure testing protocol, to test applications behind firewalls, or “Proxies”.
 
 So now, let’s try and connect all these things together. When you are testing an application, sometimes you need to check how the users see it from around the world, for example, if you use different languages. In order to do that, we need what is known as “Localization testing”, in other words, to see how the website or application looks from a different location.
@@ -75,7 +79,9 @@ Here is where Sauce Labs comes in, they provide Tunnels to run our tests within 
 
 Now that we’ve gone through these tools, I would like to share how we set up all of them to be able to test our application from different locations, using proxies and tunnels.
 
-## What infrastructure are we dealing with?
+![proxy diagram](../../assets/images/proxies-tunnels-docker-sauce/image-3.png)
+
+## 🏗️ What infrastructure are we dealing with?
 
 > Before we start, its benefical to read through Sauce Labs [documentation](https://docs.saucelabs.com/secure-connections/sauce-connect/setup-configuration/basic-setup/) on Sauce Connect Proxy.
 
@@ -85,9 +91,11 @@ We decided to set the tunnels up using an Azure Virtual Machine and experiment w
 
 > If you are not very familiar with Cloud Resources, Terraform is an Infrastructure as Code tool to configure and deploy Infrastructure in different service providers such as AWS, Azure Devops, GCP, etc.
 
-## Azure Portal Setup
+## 🌐 Azure Portal Setup
 
 First of all, we need to have a **Subscription** - this is the container of your technical resources or businesses.
+
+![azure logo](../../assets/images/proxies-tunnels-docker-sauce/image-4.png)
 
 Once we have the Subscription, we can start creating our Resource Group. This will allow us to organize our resources a bit better, by grouping them for easier management, access and cost effectiveness.
 
@@ -95,7 +103,7 @@ We are now ready to start building up our resources in Azure. What resources are
 
 So, let’s see how we can achieve that using Terraform.
 
-## Terraform Setup
+## 🌍 Terraform Setup
 
 > Note: A collaboration with DevOps or a Network Team might be needed, as you might need to know about security rules and networking in order to configure the resource in the right way to be accessible.
 
@@ -329,9 +337,11 @@ resource "azurerm_network_security_rule" "securityrulename" {
 
 So, as you can see, we are looping through the security rules declared on the locals.tf file and applying them into the security group.
 
-## Azure Devops Configuration
+## 🔧 Azure Devops Configuration
 
-## Terraform Stages
+![azure devops configuration](../../assets/images/proxies-tunnels-docker-sauce/image-5.png)
+
+## 📦 Terraform Stages
 Now it is time to configure our pipeline to execute the different Terraform Stages:
 
 - Setup
@@ -359,7 +369,7 @@ Last one (And probably the most interesting ;)):
 
 For example, all the data we need to output from our resource, is compared to make sure the correct IP Address, ports, names, user admin are correct.
 
-## Running tunnels on Sauce Labs with Docker
+## 🚇 Running tunnels on Sauce Labs with Docker
 Now in order to spin up the tunnels, we decided to do it using the Sauce Docker Container.
 
 The full documentation can be found HERE. The script might change a little bit depending on what you need to pass to initialize the tunnels and the authorization to execute the command.
@@ -390,15 +400,19 @@ So, how does everything look in action..
 
 As you can see in the image, this is the first “Stage” of the pipeline, where all the terraform commands get executed:
 
-## Build VM:
+## 🏗️ Build VM
+
+![build vm](../../assets/images/proxies-tunnels-docker-sauce/image-6.png)
 
 As you can see in the image, the “Destroy” stage is skipped, as all the tests passed!
 
 Let’s create the tunnels:
 
+![create tunnels](../../assets/images/proxies-tunnels-docker-sauce/image-7.png)
+
 And finally, our tunnels are up and running in SauceLabs:
 
-## Conclusion
+## 📝 Conclusion
 Technology moves fast and as you can see, there are a lot of tools out there to learn that can help with your testing goals. You do not need only one to rule it all, getting some ideas, knowledge and practice will allow you to understand how you can mix them to get the best of them to fulfill your needs.
 
 It is getting more interesting and fun (and tricky, sometimes, not going to lie) every day, so do not miss the opportunity and take advantage of what you can use for your testing!.
